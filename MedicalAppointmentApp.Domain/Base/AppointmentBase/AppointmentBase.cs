@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Base.AppointmentBase
 {
-    public class AppointmentBase
+    public abstract class AppointmentBase
     {
         int DoctorID { get; set; }
     }
