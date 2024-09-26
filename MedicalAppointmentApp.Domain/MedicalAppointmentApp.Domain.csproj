@@ -9,8 +9,6 @@
   <ItemGroup>
     <Folder Include="Base\" />
     <Folder Include="Entities\" />
-    <Folder Include="Result\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
