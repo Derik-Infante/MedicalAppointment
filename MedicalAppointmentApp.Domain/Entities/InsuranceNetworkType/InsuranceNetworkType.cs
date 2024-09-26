@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.InsuranceNetworkType
 {
-    internal class InsuranceNetworkType : InsuranceBase
+    public class InsuranceNetworkType : InsuranceBase
     {
         string? Description { get; set; }
     }
