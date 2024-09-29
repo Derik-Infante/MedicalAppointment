@@ -19,7 +19,7 @@ namespace MedicalAppointmentApp.Domain.Entities.Insurance.InsuranceProviders
         string? country { get; set; }
         string? ZipCode { get; set; }
         string CoverageDetails {get; set; }
-        string? LogoUrl { get; set; }
+        string? LogoUrl { get; set; } 
         bool IsPreferred { get; set; }
         
         string? CustomerSupportContact { get; set; }
