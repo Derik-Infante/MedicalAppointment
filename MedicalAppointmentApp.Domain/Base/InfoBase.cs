@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Base
 {
-    internal class BaseEntity
+    internal class InfoBase
     {
-        DateTime CreatedAt { get; set; }
-        DateTime? UpadatedAt { get; set; }
-        bool IsActive { get; set; }
+        string Name { get; set; }
+        string Email { get; set; }
+        string Address { get; set; }
 
     }
 }
