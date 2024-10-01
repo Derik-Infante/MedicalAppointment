@@ -8,5 +8,6 @@ namespace MedicalAppointmentApp.Domain.Base
 {
     internal class BaseEntity
     {
+
     }
 }

@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.AppointmentsDoctorAvailability
 {
-    public sealed class AppointmentsDoctorAvailability : AppointmentBase
+    public sealed class AppointmentsDoctorAvailability 
     {
-        int AvailabilityID { get; set; }   
-        DateTime AvailableDate {  get; set; }
-        TimeOnly  StartTime { get; set; }
-        TimeOnly EndTime { get; set; }
+        
     }
 }
