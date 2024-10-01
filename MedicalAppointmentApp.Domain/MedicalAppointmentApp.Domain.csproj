@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Base\" />
     <Folder Include="Entities\" />
+=======
+    <Folder Include="Result\" />
+>>>>>>> 2023-1015
   </ItemGroup>
 
 </Project>
