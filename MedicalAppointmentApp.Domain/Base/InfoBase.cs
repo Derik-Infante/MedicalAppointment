@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Base
 {
-    internal class InfoBase
+    public class InfoBase : BaseEntity
     {
         string Name { get; set; }
         string Email { get; set; }

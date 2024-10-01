@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Base
 {
-    internal class BaseEntity
+    public abstract class BaseEntity
     {
         DateTime CreatedAt { get; set; }
         DateTime? UpadatedAt { get; set; }
