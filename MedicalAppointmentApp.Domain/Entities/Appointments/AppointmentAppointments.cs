@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.Appointments
 {
-    internal class AppointmentAppointments : BaseEntity
+    public class AppointmentAppointments : BaseEntity
     {
         int ApppointmentID { get; set; }
         int PatientID { get; set; }

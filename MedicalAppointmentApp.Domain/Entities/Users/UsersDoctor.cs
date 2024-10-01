@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.Users
 {
-    internal class UsersDoctor : BaseEntity
+    public  class UsersDoctor : BaseEntity
     {
         int DoctorID { get; set; }
         short SpecialtyID { get; set; }

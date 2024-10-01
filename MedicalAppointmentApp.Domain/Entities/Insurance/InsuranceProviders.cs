@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.Insurance
 {
-    internal class InsuranceProviders : InfoBase
+    public class InsuranceProviders : InfoBase
     {
         int InsuranceProviderID { get; set; }
         string ContactNumber { get; set; }

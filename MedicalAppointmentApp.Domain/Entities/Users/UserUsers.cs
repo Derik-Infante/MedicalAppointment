@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.Users
 {
-    internal class UserUsers : InfoBase
+    public class UserUsers : InfoBase
     {
         int UserID { get; set; }
         string FirstName { get; set; }
