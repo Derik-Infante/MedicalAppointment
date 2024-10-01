@@ -1,12 +1,11 @@
-﻿namespace MedicalAppointmentApp.Domain.Entities.Medical
+﻿using MedicalAppointmentApp.Domain.Base;
+
+namespace MedicalAppointmentApp.Domain.Entities.Medical
 {
-    public sealed class Specialties
+    public sealed class Specialties : BaseEntity
     {
         public int SpecialtyID { get; set; }
         public string SpecialtyName { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public bool IsActive { get; set; }
 
     }
 }

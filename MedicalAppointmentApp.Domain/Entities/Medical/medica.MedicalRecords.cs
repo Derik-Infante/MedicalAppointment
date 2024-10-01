@@ -1,7 +1,9 @@
 ﻿
+using MedicalAppointmentApp.Domain.Base;
+
 namespace MedicalAppointmentApp.Domain.Entities.AppointmentsAppointments
 {
-    public sealed class MedicalRecords
+    public sealed class MedicalRecords : BaseEntity
     {
         public int RecordID { get; set; }
         public int PatiendID { get; set; }
@@ -9,7 +11,5 @@ namespace MedicalAppointmentApp.Domain.Entities.AppointmentsAppointments
         public string Diagnosis { get; set; }
         public string Treatment { get; set; }
         public DateTime DateOfVisit { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
 }
