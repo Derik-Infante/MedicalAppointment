@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Repositories
 {
-    public  interface IBaseRepository<T>
+    public interface IBaseRepository<T> 
+    {
+    }
 
   
 }
