@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.Insurance
 {
-    public class InsuranceProviders : InfoBase
+    public class Providers : InfoBase
     {
-        int InsuranceProviderID { get; set; }
-        string ContactNumber { get; set; }
-        string? Website {  get; set; }
-        string? City { get; set; }
-        string? Country { get; set; }
-        string? State { get; set; }
-        string? ZipCode { get; set; }
-        string ConverageDetails { get; set; }
-        string? LogoUrl { get; set; }
+        public int InsuranceProviderID { get; set; }
+        public string ContactNumber { get; set; }
+        public string? Website {  get; set; }
+        public string? City { get; set; }
+        public string? Country { get; set; }
+        public string? State { get; set; }
+        public string? ZipCode { get; set; }
+        public string ConverageDetails { get; set; }
+        public string? LogoUrl { get; set; }
         bool IsPreferred { get; set; }
         int NetworkTypeId { get; set; }
         string? CustomerSupportContact {  get; set; } 

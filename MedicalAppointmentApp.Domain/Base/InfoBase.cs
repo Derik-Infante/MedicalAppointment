@@ -8,9 +8,9 @@ namespace MedicalAppointmentApp.Domain.Base
 {
     public class InfoBase : BaseEntity
     {
-        string Name { get; set; }
-        string Email { get; set; }
-        string Address { get; set; }
+        public string? Name { get; set; }
+        string? Email { get; set; }
+        string? Address { get; set; }
 
     }
 }

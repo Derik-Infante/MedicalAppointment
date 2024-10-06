@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.Appointments
 {
-    public class AppointmentDoctorAvailability
+    public class Appointments : BaseEntity
     {
-        int AvailabilityID { get; set; }
+        int ApppointmentID { get; set; }
+        int PatientID { get; set; }
         int DoctorID { get; set; }
-        DateTime AvailableDate { get; set; }
-        DateTime StartTime { get; set; }
-        DateTime EndTime { get; set; }
+        DateTime AppointmentDate { get; set; }
+        int StatusID { get; set; }
+
     }
 }
