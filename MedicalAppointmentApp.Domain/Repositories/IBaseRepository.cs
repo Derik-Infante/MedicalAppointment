@@ -1,35 +1,21 @@
 ﻿
+using MedicalAppointmentApp.Domain.Result;
 using System.Linq.Expressions;
 
 namespace MedicalAppointmentApp.Domain.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : class
     {
-        /// <Sumary>
-        /// 
-        /// </Sumary>
-        /// <param name="entity"></param>
+        Task<OperationResult> Save(TEntity entity);
         
-        void Save(TEntity entity);
-        /// <Sumary>
-        /// 
-        /// </Sumary>
-        /// <param name="entity"></param>
+        Task<OperationResult> Update(TEntity entity);
         
-        void Update(TEntity entity);
-        /// <Sumary>
-        /// 
-        /// </Sumary>
-        /// <param name="entity"></param>
+        Task<OperationResult> Remove(TEntity entity);
         
-        void Remove(TEntity entity);
-        /// <Sumary>
-        /// 
-        /// </Sumary>
-        /// <param name="entity"></param>
+        Task<OperationResult> GetAll();
 
-
-
+        Task<OperationResult> GetEntityBy(int Id);
+        Task<OperationResult> Exist(Expression<Func<TEntity, bool>> filter);
     }
 
 
