@@ -15,7 +15,6 @@ namespace MedicalAppointmentApp.Domain.Repositories
         Task<OperationResult> GetAll();
 
         Task<OperationResult> GetEntityBy(int Id);
-
         Task<OperationResult> Exist(Expression<Func<TEntity, bool>> filter);
     }
 
