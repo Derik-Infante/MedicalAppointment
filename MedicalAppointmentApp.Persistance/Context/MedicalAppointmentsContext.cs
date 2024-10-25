@@ -1,4 +1,4 @@
-﻿using MedicalAppointmentApp.Domain.Entities.AppointmentsAppointments;
+﻿
 using MedicalAppointmentApp.Domain.Entities.System;
 using Microsoft.EntityFrameworkCore;
 
