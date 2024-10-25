@@ -2,7 +2,6 @@
 using MedicalAppointmentApp.Domain.Entities.System;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace MedicalAppointmentApp.Persistance.Context
 {
     public partial class MedicalAppointmentsContext : DbContext
@@ -11,7 +10,6 @@ namespace MedicalAppointmentApp.Persistance.Context
         {
 
         }
-
         #region "System Entities"
         public DbSet<Notifications> Notifications { get; set; }
         public DbSet<Roles> Roles { get; set; }
