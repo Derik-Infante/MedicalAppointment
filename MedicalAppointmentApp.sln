@@ -7,15 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{BDC0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{2BF1CD7A-B22E-4A40-A945-93C5504FB618}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAppointmentApp.Domain", "MedicalAppointmentApp.Domain\MedicalAppointmentApp.Domain.csproj", "{B9268CFA-A4DA-40CF-B22D-63EEAE5BD603}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.Domain", "MedicalAppointmentApp.Domain\MedicalAppointmentApp.Domain.csproj", "{B9268CFA-A4DA-40CF-B22D-63EEAE5BD603}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAppointmentApp.Persistance", "MedicalAppointmentApp.Persistance\MedicalAppointmentApp.Persistance.csproj", "{D3C0A7FB-82A1-4557-B996-E365C838E6A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.Persistance", "MedicalAppointmentApp.Persistance\MedicalAppointmentApp.Persistance.csproj", "{D3C0A7FB-82A1-4557-B996-E365C838E6A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAppointmentApp.Infraestructure", "MedicalAppointmentApp.Infraestructure\MedicalAppointmentApp.Infraestructure.csproj", "{1434A61A-5B38-4B55-963C-5032D1ABD046}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.Infraestructure", "MedicalAppointmentApp.Infraestructure\MedicalAppointmentApp.Infraestructure.csproj", "{1434A61A-5B38-4B55-963C-5032D1ABD046}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "a", "a", "{6361E5DD-2035-49AE-87DF-9428732A4DC9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MedicalAppointmentApp", "MedicalAppointmentApp", "{3395C86C-7F3F-4C68-8F17-D9F939094FBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,11 +38,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B9268CFA-A4DA-40CF-B22D-63EEAE5BD603} = {3395C86C-7F3F-4C68-8F17-D9F939094FBF}
-		{D3C0A7FB-82A1-4557-B996-E365C838E6A1} = {3395C86C-7F3F-4C68-8F17-D9F939094FBF}
-		{1434A61A-5B38-4B55-963C-5032D1ABD046} = {3395C86C-7F3F-4C68-8F17-D9F939094FBF}
+		{B9268CFA-A4DA-40CF-B22D-63EEAE5BD603} = {BDC028B4-14B8-45E9-B87B-2F22FDFEA82D}
+		{D3C0A7FB-82A1-4557-B996-E365C838E6A1} = {BDC028B4-14B8-45E9-B87B-2F22FDFEA82D}
+		{1434A61A-5B38-4B55-963C-5032D1ABD046} = {BDC028B4-14B8-45E9-B87B-2F22FDFEA82D}
 		{6361E5DD-2035-49AE-87DF-9428732A4DC9} = {2BF1CD7A-B22E-4A40-A945-93C5504FB618}
-		{3395C86C-7F3F-4C68-8F17-D9F939094FBF} = {BDC028B4-14B8-45E9-B87B-2F22FDFEA82D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FBCAA1BB-59A5-4618-88C5-96B0FD77DDFC}
