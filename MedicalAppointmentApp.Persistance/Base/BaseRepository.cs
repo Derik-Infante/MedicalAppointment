@@ -58,7 +58,7 @@ namespace MedicalAppointmentApp.Persistance.Base
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = $"Ocurrió el error {ex.Message} obteniendo los datos";
+                result.Message = $"Ocurrió un error {ex.Message} obteniendo los datos";
             }
 
             return result;
@@ -70,29 +70,69 @@ namespace MedicalAppointmentApp.Persistance.Base
 
             try
             {
-                var entity = await this.entities.FirstOrDefaultAsync();
+                var entity = await this.entities.FindAsync(Id);
             }
             catch (Exception ex)
             {
-                
+                result.Success = false;
+                result.Message = $"Ocurrió un error {ex.Message} ocurrió un error obteniendo la entidad";
             }
 
             return result;
         }
 
-        public virtual Task<OperationResult> Remove(TEntity entity)
+        public virtual async Task<OperationResult> Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult();
+
+            try
+            {
+                entities.Remove(entity);
+                await _medicalAppointmentsContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = $"Ocurrió un error {ex.Message} ocurrió un error removiendo la entidad";
+            }
+
+            return result;
         }
 
-        public virtual Task<OperationResult> Save(TEntity entity)
+        public virtual async Task<OperationResult> Save(TEntity entity)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult();
+
+            try
+            {
+                entities.Add(entity);
+                await _medicalAppointmentsContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = $"Ocurrió un error {ex.Message} ocurrió un error guardando la entidad";
+            }
+
+            return result;
         }
 
-        public virtual Task<OperationResult> Update(TEntity entity)
+        public virtual async Task<OperationResult> Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult();
+
+            try
+            {
+                entities.Update(entity);
+                await _medicalAppointmentsContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = $"Ocurrió un error {ex.Message} ocurrió un error actualizando la entidad";
+            }
+
+            return result;
         }
     }
 }
