@@ -5,15 +5,14 @@ using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Persistance.Base;
 using MedicalAppointmentApp.Persistance.Context;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
-using Microsoft.Extensions.Logging;
 
 namespace MedicalAppointmentApp.Persistance.Repositories
 {
-    public class NotificationsRepository(MedicalAppointmentsContext medicalAppointmentsContext, ILogger<NotificationsRepository> logger) : BaseRepository<Notifications> (medicalAppointmentsContext), INotificationsRepository
+    internal class StatusRepository : BaseRepository<Notifications>, INotificationsRepository
     {
-        private readonly MedicalAppointmentsContext _medicalAppointmentsContext = medicalAppointmentsContext;
-        private readonly ILogger<NotificationsRepository> logger = logger;
-        
+        public StatusRepository(MedicalAppointmentsContext medicalAppointmentsContext) : base(medicalAppointmentsContext)
+        {
+        }
 
         public List<OperationResult> GetNotificationByNotificationID(int NotificationID)
         {
@@ -24,6 +23,6 @@ namespace MedicalAppointmentApp.Persistance.Repositories
         {
             return base.Update(entity);
         }
-
     }
+
 }

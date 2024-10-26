@@ -1,19 +1,16 @@
-﻿
-
-using MedicalAppointmentApp.Domain.Entities.System;
+﻿using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Persistance.Base;
 using MedicalAppointmentApp.Persistance.Context;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
-using Microsoft.Extensions.Logging;
 
 namespace MedicalAppointmentApp.Persistance.Repositories
 {
-    public class NotificationsRepository(MedicalAppointmentsContext medicalAppointmentsContext, ILogger<NotificationsRepository> logger) : BaseRepository<Notifications> (medicalAppointmentsContext), INotificationsRepository
+    public class RolesRepository : BaseRepository<Notifications>, INotificationsRepository
     {
-        private readonly MedicalAppointmentsContext _medicalAppointmentsContext = medicalAppointmentsContext;
-        private readonly ILogger<NotificationsRepository> logger = logger;
-        
+        public RolesRepository (MedicalAppointmentsContext medicalAppointmentsContext) : base(medicalAppointmentsContext)
+        {
+        }
 
         public List<OperationResult> GetNotificationByNotificationID(int NotificationID)
         {
