@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MedicalAppointmentApp.Persistance.Models;
 
-public partial class Notification
+public partial class NotificationModel
 {
     public int NotificationId { get; set; }
 

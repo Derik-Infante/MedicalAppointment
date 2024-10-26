@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MedicalAppointmentApp.Persistance.Models;
 
-public partial class Status
+public partial class StatusModel
 {
     public int StatusId { get; set; }
 
