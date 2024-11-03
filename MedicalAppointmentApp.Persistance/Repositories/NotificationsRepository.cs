@@ -1,29 +1,64 @@
-﻿
-
-using MedicalAppointmentApp.Domain.Entities.System;
+﻿using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Persistance.Base;
 using MedicalAppointmentApp.Persistance.Context;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace MedicalAppointmentApp.Persistance.Repositories
 {
-    public class NotificationsRepository(MedicalAppointmentsContext medicalAppointmentsContext, ILogger<NotificationsRepository> logger) : BaseRepository<Notifications> (medicalAppointmentsContext), INotificationsRepository
+    public class NotificationsRepository : BaseRepository<Notifications>, INotificationsRepository
     {
-        private readonly MedicalAppointmentsContext _medicalAppointmentsContext = medicalAppointmentsContext;
-        private readonly ILogger<NotificationsRepository> logger = logger;
-        
+        private readonly MedicalAppointmentsContext _medicalAppointmentsContext;
+        private readonly ILogger<NotificationsRepository> _logger;
 
-        public List<OperationResult> GetNotificationByNotificationID(int NotificationID)
+        public NotificationsRepository(MedicalAppointmentsContext medicalAppointmentsContext, ILogger<NotificationsRepository> logger)
+        : base(medicalAppointmentsContext)
         {
-            throw new NotImplementedException();
+            _medicalAppointmentsContext = medicalAppointmentsContext;
+            _logger = logger;
         }
 
-        public override Task<OperationResult> Update(Notifications entity)
+        public async Task<OperationResult> AddNotification(Notifications notification)
         {
-            return base.Update(entity);
+            return await Save(notification);
+        }
+
+        public async Task<OperationResult> GetNotificationByNotificationID(int NotificationID)
+        {
+            return await GetEntityBy(NotificationID);
+        }
+
+        public async Task<OperationResult> GetAllNotificationsByUserID(int UserID)
+        {
+            try
+            {
+                var notifications = await _medicalAppointmentsContext.Notifications
+                    .Where(n => n.UserID == UserID)
+                    .ToListAsync();
+
+                return new OperationResult { Success = true, Data = notifications };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener las notificaciones del usuario.");
+                return new OperationResult { Success = false, Message = "Error al obtener las notificaciones." };
+            }
+        }
+
+        public async Task<OperationResult> DeleteNotification(int NotificationID)
+        {
+            var notification = await _medicalAppointmentsContext.Notifications.FindAsync(NotificationID);
+
+            if (notification == null)
+            {
+                return new OperationResult { Success = false, Message = "Notificación no encontrada." };
+            }
+
+            return await Remove(notification);
         }
 
     }
+
 }

@@ -1,12 +1,9 @@
-﻿
-
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
+﻿using System.Linq.Expressions;
 using MedicalAppointmentApp.Domain.Repositories;
 using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+
 
 
 namespace MedicalAppointmentApp.Persistance.Base
@@ -71,11 +68,21 @@ namespace MedicalAppointmentApp.Persistance.Base
             try
             {
                 var entity = await this.entities.FindAsync(Id);
+                if (entity == null)
+                {
+                    result.Success = false;
+                    result.Message = "Entidad no encontrada.";
+                }
+                else
+                {
+                    result.Success = true;
+                    result.Data = entity;
+                }
             }
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = $"Ocurrió un error {ex.Message} ocurrió un error obteniendo la entidad";
+                result.Message = $"Ocurrió un error {ex.Message} al obtener la entidad";
             }
 
             return result;
