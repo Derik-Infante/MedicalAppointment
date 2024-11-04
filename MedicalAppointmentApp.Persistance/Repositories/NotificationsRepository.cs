@@ -14,7 +14,7 @@ namespace MedicalAppointmentApp.Persistance.Repositories
         private readonly ILogger<NotificationsRepository> _logger;
 
         public NotificationsRepository(MedicalAppointmentsContext medicalAppointmentsContext, ILogger<NotificationsRepository> logger)
-        : base(medicalAppointmentsContext)
+            : base(medicalAppointmentsContext)
         {
             _medicalAppointmentsContext = medicalAppointmentsContext;
             _logger = logger;
@@ -59,6 +59,6 @@ namespace MedicalAppointmentApp.Persistance.Repositories
             return await Remove(notification);
         }
 
+        
     }
-
 }

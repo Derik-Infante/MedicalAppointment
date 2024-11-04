@@ -6,9 +6,9 @@ namespace MedicalAppointmentApp.Persistance.Interfaces.System
 {
     public interface INotificationsRepository : IBaseRepository<Notifications> 
     {
-        Task<OperationResult> AddNotification(Notifications notification);
-        Task<OperationResult> GetNotificationByNotificationID(int notificationID);
-        Task<OperationResult> GetAllNotificationsByUserID(int userID);
-        Task<OperationResult> DeleteNotification(int notificationID);
+        Task<OperationResult> AddNotification(Notifications notification); // Para agregar una nueva notificación
+        Task<OperationResult> GetNotificationByNotificationID(int NotificationID); // Obtener notificación por ID
+        Task<OperationResult> DeleteNotification(int NotificationID); // Eliminar notificación
+        
     }
 }

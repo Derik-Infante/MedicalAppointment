@@ -6,8 +6,12 @@ using MedicalAppointmentApp.Domain.Result;
 
 namespace MedicalAppointmentApp.Persistance.Interfaces.System
 {
-    internal interface IStatusRepository : IBaseRepository<Notifications>
+    public interface IStatusRepository : IBaseRepository<Status>
     {
-        List<OperationResult> GetStatusByStatusID(int StatusID);
+        Task<OperationResult> GetStatusByStatusID(int statusID); // Obtener estado por ID
+        Task<IEnumerable<Status>> GetAllStatuses(); // Obtener todos los estados
+        Task<OperationResult> AddStatus(Status status); // Agregar un nuevo estado
+        Task<OperationResult> UpdateStatus(Status status); // Actualizar un estado existente
+        Task<OperationResult> DeleteStatus(int statusID); // Eliminar estado
     }
 }
