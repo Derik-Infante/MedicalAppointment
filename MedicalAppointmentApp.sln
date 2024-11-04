@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "a", "a", "{6361E5DD-2035-49
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{20A9A846-E79B-48E6-9FA0-2B02412B1963}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointment.System.Api", "MedicalAppointment.System.Api\MedicalAppointment.System.Api.csproj", "{39119311-AD71-4AB9-B79E-82F55BE13F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAppointmentsApp.System.Api", "MedicalAppointment.System.Api\MedicalAppointmentsApp.System.Api.csproj", "{39119311-AD71-4AB9-B79E-82F55BE13F00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
