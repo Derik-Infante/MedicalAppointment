@@ -9,9 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MedicalAppointmentsContext>(options => options.UseMySql(
         builder.Configuration.GetConnectionString("MedicalAppointmentDb"),
-        new MySqlServerVersion(new Version(8, 0, 2)) 
+        new MySqlServerVersion(new Version(8, 0, 1)) 
     ));
-//El registro de cada una de las dependecias Repositorios de configuration. //
+
+//El registro de cada una de las dependecias Repositorios de System. //
 
 builder.Services.AddScoped<INotificationsRepository, NotificationsRepository>();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
