@@ -34,9 +34,17 @@ namespace MedicalAppointmentApp.Persistance.Repositories
         {
             try
             {
-                var notifications = await _medicalAppointmentsContext.Notifications
-                    .Where(n => n.UserID == UserID)
-                    .ToListAsync();
+                var notifications = await (from n in _medicalAppointmentsContext.Notifications
+                                           join u in _medicalAppointmentsContext.Users
+                                           on n.UserID equals u.UserID
+                                           where n.UserID == UserID
+                                           select new
+                                           {
+                                               n.NotificationID,
+                                               n.Message,
+                                               UserFirstName = u.FirstName,
+                                               UserLastName = u.LastName
+                                           }).ToListAsync();
 
                 return new OperationResult { Success = true, Data = notifications };
             }

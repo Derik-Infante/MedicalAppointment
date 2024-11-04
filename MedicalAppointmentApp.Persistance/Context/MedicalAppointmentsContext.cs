@@ -1,5 +1,6 @@
 ﻿
 using MedicalAppointmentApp.Domain.Entities.System;
+using MedicalAppointmentApp.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicalAppointmentApp.Persistance.Context
@@ -15,5 +16,10 @@ namespace MedicalAppointmentApp.Persistance.Context
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Status> Status { get; set; }
         #endregion
+
+        #region "Users Entities"
+        public DbSet<Users> Users { get; set; }
+        #endregion
+
     }
 }
