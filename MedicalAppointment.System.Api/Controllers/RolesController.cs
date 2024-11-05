@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using MedicalAppointmentApp.Domain.Entities.System;
+using MedicalAppointmentApp.Persistance.Interfaces.System;
+using MedicalAppointmentApp.Persistance.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalAppointment.System.Api.Controllers
 {
@@ -8,36 +9,71 @@ namespace MedicalAppointment.System.Api.Controllers
     [ApiController]
     public class RolesController : ControllerBase
     {
-        // GET: api/<RolesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IRolesRepository _rolesRepository;
+
+        public RolesController(IRolesRepository RolesRepository)
         {
-            return new string[] { "value1", "value2" };
+            _rolesRepository = RolesRepository;
+        }
+        // GET: api/<RolesController>
+        [HttpGet("GetRol")]
+        public async Task<IActionResult> Get()
+        {
+            var result = await _rolesRepository.GetAll();
+
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
         // GET api/<RolesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("GetRoleByRoleID")]
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            var result = await _rolesRepository.GetRoleByRoleID(id);
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
         }
 
         // POST api/<RolesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("SaveRole")]
+        public async Task<IActionResult> Post([FromBody] Roles rol)
         {
+            var result = await _rolesRepository.Save(rol);
+
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
         // PUT api/<RolesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("ModifyRole")]
+        public async Task<IActionResult> Put([FromBody] Roles rol)
         {
+            var result = await _rolesRepository.Update(rol);
+
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
         // DELETE api/<RolesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("DisableRole")]
+        public async Task<IActionResult> DisableRuta(Roles rol)
         {
+            var result = await _rolesRepository.Remove(rol);
+
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace MedicalAppointmentApp.Domain.Entities.Users
     [Table("Users", Schema = "Usuario")]
     public class Users : BaseEntity
     {
+        [Key]
         public int UserID { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
