@@ -10,9 +10,4 @@
     <ProjectReference Include="..\MedicalAppointmentApp.Persistance\MedicalAppointmentApp.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Responses\" />
-  </ItemGroup>
-
 </Project>
