@@ -1,5 +1,7 @@
 ﻿
 using MedicalAppointmentApp.Application.Base;
+using MedicalAppointmentApp.Application.Contracts;
+using MedicalAppointmentApp.Application.Services.System;
 using MedicalAppointmentApp.Domain.Repositories;
 using MedicalAppointmentApp.Persistance.Base;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
@@ -18,7 +20,7 @@ namespace MedicalAppointmentApp.IOC.Dependencies.System
 
             service.AddScoped<IStatusRepository, StatusRepository>();
 
-            service.AddTransient<IBusService, BusService>();
+            //service.AddTransient<INotificationsService, NotificationsService>();
         }
 
     }
