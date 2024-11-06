@@ -1,6 +1,6 @@
-﻿using MedicalAppointmentApp.Domain.Entities.System;
+﻿
+using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
-using MedicalAppointmentApp.Persistance.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalAppointment.System.Api.Controllers
@@ -11,11 +11,11 @@ namespace MedicalAppointment.System.Api.Controllers
     {
         private readonly INotificationsRepository _notificationsRepository;
 
-        public NotificationsController(INotificationsRepository NotificationsRepository) 
+        public NotificationsController(INotificationsRepository notificationsRepository) 
         {
-            _notificationsRepository = NotificationsRepository;
+            _notificationsRepository = notificationsRepository;
         }
-        // GET: api/<NotificationsController>
+
         [HttpGet("GetNotification")]
         public async Task<IActionResult> Get()
         {
@@ -27,7 +27,6 @@ namespace MedicalAppointment.System.Api.Controllers
             return Ok(result);
         }
 
-        // GET api/<NotificationsController>/5
         [HttpGet("GetNotificationByNotificationID")]
         public async Task<IActionResult> Get(int id)
         {
@@ -40,10 +39,10 @@ namespace MedicalAppointment.System.Api.Controllers
             return Ok(result);
         }
 
-        // POST api/<NotificationsController>
         [HttpPost("SaveNotification")]
         public async Task<IActionResult> Post([FromBody] Notifications notification)
         {
+            
             var result = await _notificationsRepository.Save(notification);
 
             if (!result.Success)
@@ -52,8 +51,6 @@ namespace MedicalAppointment.System.Api.Controllers
             return Ok(result);
         }
 
-
-        // PUT api/<NotificationsController>/5
         [HttpPut("ModifyNotification")]
         public async Task<IActionResult> Put([FromBody] Notifications notification)
         {
@@ -65,8 +62,6 @@ namespace MedicalAppointment.System.Api.Controllers
             return Ok(result);
         }
 
-
-        // DELETE api/<NotificationsController>/5
         [HttpDelete("DisableNotification")]
         public async Task<IActionResult> DisableRuta(Notifications notification)
         {

@@ -11,9 +11,9 @@ namespace MedicalAppointment.System.Api.Controllers
     public class StatusController : ControllerBase
     {
         private readonly IStatusRepository _statusRepository;
-        public StatusController(IStatusRepository StatusRepository)
+        public StatusController(IStatusRepository statusRepository)
         {
-            _statusRepository = StatusRepository;
+            _statusRepository = statusRepository;
         }
         // GET: api/<StatusController>
         [HttpGet("GetStatus")]

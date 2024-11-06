@@ -11,9 +11,9 @@ namespace MedicalAppointment.System.Api.Controllers
     {
         private readonly IRolesRepository _rolesRepository;
 
-        public RolesController(IRolesRepository RolesRepository)
+        public RolesController(IRolesRepository rolesRepository)
         {
-            _rolesRepository = RolesRepository;
+            _rolesRepository = rolesRepository;
         }
         // GET: api/<RolesController>
         [HttpGet("GetRol")]
