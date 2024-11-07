@@ -1,6 +1,5 @@
 ﻿using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
-using MedicalAppointmentApp.Persistance.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalAppointment.System.Api.Controllers

@@ -14,6 +14,6 @@ namespace MedicalAppointmentApp.Domain.Entities.System
 
         public string? Message { get; set; }
 
-        DateTime SentAt { get; set; }
+        public DateTime SentAt { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿
-
 namespace MedicalAppointmentApp.Persistance.Models;
 
 public partial class NotificationModel
@@ -8,7 +7,7 @@ public partial class NotificationModel
 
     public int UserId { get; set; }
 
-    public string Message { get; set; } = null!;
+    public string? Message { get; set; } 
 
-    public DateTime? SentAt { get; set; }
+    public DateTime SentAt { get; set; }
 }

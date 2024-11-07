@@ -37,15 +37,14 @@ namespace MedicalAppointmentApp.Persistance
                 try
                 {
                     // Crear una instancia de la entidad y asignar valores
-                    var nuevoRegistro = new Notifications
+                    var nuevoRegistro = new Status
                     {
-                        Message = "Prueba",
-                        NotificationID = 53453,
-                        UserID = 42343
+                        statusName = "Prueba",
+                        statusID = 53453
                     };
 
                     // Agregar el registro al contexto
-                    context.Notifications.Add(nuevoRegistro);
+                    context.Status.Add(nuevoRegistro);
 
                     // Guardar los cambios en la base de datos
                     context.SaveChanges();
