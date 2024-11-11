@@ -20,7 +20,7 @@ namespace MedicalAppointmentApp.IOC.Dependencies.System
 
             service.AddScoped<IStatusRepository, StatusRepository>();
 
-            //service.AddTransient<INotificationsService, NotificationsService>();
+            service.AddTransient<INotificationsService, NotificationsService>();
         }
 
     }
