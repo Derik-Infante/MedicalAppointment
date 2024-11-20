@@ -1,9 +1,6 @@
 ﻿
-using MedicalAppointmentApp.Application.Base;
 using MedicalAppointmentApp.Application.Contracts;
 using MedicalAppointmentApp.Application.Services.System;
-using MedicalAppointmentApp.Domain.Repositories;
-using MedicalAppointmentApp.Persistance.Base;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
 using MedicalAppointmentApp.Persistance.Repositories;
 using Microsoft.Extensions.DependencyInjection;
