@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MedicalAppointmentApp.Models.NotificationViewModel>
+
+<h2>Notificaciones</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Mensaje</th>
+            <th>Enviado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var notification in Model)
+        {
+            <tr>
+                <td>@notification.NotificationID</td>
+                <td>@notification.UserID</td>
+                <td>@notification.Message</td>
+                <td>@notification.GetFormattedDate()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@notification.NotificationID" class="btn btn-primary">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@notification.NotificationID" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-success">Crear nueva notificación</a>

@@ -1,0 +1,18 @@
+﻿@model MedicalAppointmentApp.Web.Models.RoleViewModel
+
+<h2>Editar Rol</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="RoleId" />
+    <div class="form-group">
+        <label for="RoleName">Nombre del Rol</label>
+        <input asp-for="RoleName" class="form-control" />
+        <span asp-validation-for="RoleName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="IsActive">Activo</label>
+        <input asp-for="IsActive" type="checkbox" class="form-check-input" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
