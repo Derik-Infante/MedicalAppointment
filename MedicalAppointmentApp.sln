@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAppointmentApp.IOC",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAppointmentApp.Application", "MedicalAppointmentApp.Application\MedicalAppointmentApp.Application.csproj", "{B4151370-1331-4C6B-B9DB-00292E360F57}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front-end", "Front-end", "{88A5634E-270D-4DF6-8EDC-F82EBADA3DCD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.Web", "Front-end\MedicalAppointmentApp.Web.csproj", "{F509C690-AC8B-4727-9D49-1310E28AA030}"
 EndProject
 Global
