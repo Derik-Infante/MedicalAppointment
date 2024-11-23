@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MedicalAppointmentApp.Domain\MedicalAppointmentApp.Domain.csproj" />
+    <ProjectReference Include="..\MedicalAppointmentApp.Infraestructure\MedicalAppointmentApp.Infraestructure.csproj" />
     <ProjectReference Include="..\MedicalAppointmentApp.Persistance\MedicalAppointmentApp.Persistance.csproj" />
   </ItemGroup>
 

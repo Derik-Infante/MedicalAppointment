@@ -1,30 +1,52 @@
-﻿@model IEnumerable<MedicalAppointmentApp.Models.NotificationViewModel>
+﻿@model IEnumerable<MedicalAppointmentApp.Persistance.Models.NotificationModel>
 
-<h2>Notificaciones</h2>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Notificaciones</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Usuario</th>
-            <th>Mensaje</th>
-            <th>Enviado</th>
-            <th>Acciones</th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotificationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SentAt)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var notification in Model)
-        {
-            <tr>
-                <td>@notification.NotificationID</td>
-                <td>@notification.UserID</td>
-                <td>@notification.Message</td>
-                <td>@notification.GetFormattedDate()</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@notification.NotificationID" class="btn btn-primary">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@notification.NotificationID" class="btn btn-danger">Eliminar</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotificationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SentAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.NotificationId}) |
+                    @Html.ActionLink("Details", "Details", new { id = item.NotificationId }) |
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-<a asp-action="Create" class="btn btn-success">Crear nueva notificación</a>
