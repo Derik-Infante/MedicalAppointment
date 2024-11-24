@@ -1,4 +1,4 @@
-﻿namespace MedicalAppointmentApp.Web.Models
+namespace MedicalAppointmentApp.Web.Models
 {
     public class ErrorViewModel
     {

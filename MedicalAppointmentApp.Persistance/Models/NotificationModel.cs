@@ -1,4 +1,5 @@
 ﻿
+
 namespace MedicalAppointmentApp.Persistance.Models;
 
 public partial class NotificationModel
@@ -7,7 +8,12 @@ public partial class NotificationModel
 
     public int UserId { get; set; }
 
-    public string? Message { get; set; } 
+    public string Message { get; set; } 
 
     public DateTime SentAt { get; set; }
+
+    public static explicit operator NotificationModel(List<NotificationModel>? v)
+    {
+        throw new NotImplementedException();
+    }
 }

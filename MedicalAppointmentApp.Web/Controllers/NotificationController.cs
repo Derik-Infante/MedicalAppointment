@@ -1,10 +1,10 @@
 ﻿using MedicalAppointmentApp.Application.Contracts;
+using MedicalAppointmentApp.Application.Services.System;
 using MedicalAppointmentApp.Persistance.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MedicalAppointmentApp.Web.Controllers
+namespace Front_end.Controllers
 {
-    [Route("Notifications")]
     public class NotificationsController : Controller
     {
         private readonly INotificationsService _notificationService;
@@ -12,39 +12,35 @@ namespace MedicalAppointmentApp.Web.Controllers
         public NotificationsController(INotificationsService notificationService)
         {
             _notificationService = notificationService;
-            
-        }
 
-        [HttpGet]
+        }
         public async Task<IActionResult> Index()
         {
             var result = await _notificationService.GetAll();
 
-            if (!result.IsSuccess)
+            if (result.IsSuccess)
             {
                 List<NotificationModel> notificationModel = (List<NotificationModel>)result.Data;
 
                 return View(notificationModel);
             }
-
             return View();
 
         }
 
-
-
-
-
-
-
-
-        [HttpGet("Details/{id}")]
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
+            var result = await _notificationService.GetById(id);
+
+            if (result.IsSuccess)
+            {
+                var notificationModel = (NotificationModel)result.Data;
+
+                return View(notificationModel);
+            }
             return View();
         }
 
-        [HttpGet("Create")]
         public ActionResult Create()
         {
             return View();
@@ -83,6 +79,5 @@ namespace MedicalAppointmentApp.Web.Controllers
             }
         }
 
-        
     }
 }

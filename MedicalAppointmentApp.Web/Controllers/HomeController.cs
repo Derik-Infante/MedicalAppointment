@@ -1,4 +1,4 @@
-﻿using MedicalAppointmentApp.Web.Models;
+using MedicalAppointmentApp.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
