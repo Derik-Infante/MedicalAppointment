@@ -2,10 +2,8 @@
 
 namespace MedicalAppointmentApp.Web.Models
 {
-    public class NotificationGetResultModel
+    public class NotificationGetAllResultModel : BaseApiResponseModel
     {
-        public object? message { get; set; }
-        public bool success { get; set; }
         public List<NotificationModel>? data { get; set; }
     }
 }
