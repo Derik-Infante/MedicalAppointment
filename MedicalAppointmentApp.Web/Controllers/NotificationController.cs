@@ -1,5 +1,4 @@
 ﻿using MedicalAppointmentApp.Application.Contracts;
-using MedicalAppointmentApp.Application.Services.System;
 using MedicalAppointmentApp.Persistance.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,13 +17,13 @@ namespace Front_end.Controllers
         {
             var result = await _notificationService.GetAll();
 
-            if (result.IsSuccess)
+            if (result.IsSuccess && result.Data != null)
             {
                 List<NotificationModel> notificationModel = (List<NotificationModel>)result.Data;
-
                 return View(notificationModel);
             }
-            return View();
+
+            return View(new List<NotificationModel>());
 
         }
 
@@ -39,44 +38,6 @@ namespace Front_end.Controllers
                 return View(notificationModel);
             }
             return View();
-        }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
     }

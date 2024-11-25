@@ -1,5 +1,4 @@
 ﻿using MedicalAppointmentApp.Application.Contracts;
-using MedicalAppointmentApp.Persistance.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalAppointmentApp.Web.Controllers
@@ -12,23 +11,6 @@ namespace MedicalAppointmentApp.Web.Controllers
         {
             _rolesService = rolesService;
 
-        }
-        public async Task<ActionResult> Index()
-        {
-            var result = await _rolesService.GetAll();
-
-            if (result.IsSuccess)
-            {
-                List<RoleModel> roleModel = (List<RoleModel>)result.Data;
-
-                return View(roleModel);
-            }
-            return View();
-        }
-
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         public ActionResult Create()

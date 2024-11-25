@@ -15,4 +15,8 @@
     <ProjectReference Include="..\MedicalAppointmentApp.Application\MedicalAppointmentApp.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Roles\" />
+  </ItemGroup>
+
 </Project>
