@@ -1,5 +1,6 @@
 ﻿using MedicalAppointmentApp.Application.Contracts;
 using MedicalAppointmentApp.Application.Dtos.System.Status;
+using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Persistance.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,8 +21,15 @@ namespace MedicalAppointmentApp.Web.Controllers
 
             if (result.IsSuccess && result.Data != null)
             {
-                List<StatusModel> roleModel = (List<StatusModel>)result.Data;
-                return View(roleModel);
+                List<StatusModel> statusModel = ((List<Status>)result.Data)
+                    .Select(s => new StatusModel
+                    {
+                        StatusId = s.statusID,  
+                        StatusName = s.statusName ?? string.Empty  
+                    })
+                    .ToList();
+
+                return View(statusModel);
             }
 
             return View(new List<StatusModel>());

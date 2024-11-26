@@ -40,7 +40,7 @@ namespace MedicalAppointmentApp.Web.Controllers
         {
             string url = "http://localhost:5133/api/";
 
-            NotificationGetAllResultModel? notificationGetAllResultModel = new NotificationGetAllResultModel();
+            NotificationGetByIdModel? notificationGetByIdModel = new NotificationGetByIdModel();
 
             using (var client = new HttpClient())
             {

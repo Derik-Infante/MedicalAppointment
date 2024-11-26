@@ -8,7 +8,7 @@ public partial class NotificationModel
 
     public int UserId { get; set; }
 
-    public string Message { get; set; } 
+    public string? Message { get; set; } 
 
     public DateTime SentAt { get; set; }
 

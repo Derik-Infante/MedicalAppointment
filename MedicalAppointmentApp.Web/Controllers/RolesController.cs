@@ -1,5 +1,6 @@
 ﻿using MedicalAppointmentApp.Application.Contracts;
 using MedicalAppointmentApp.Application.Dtos.System.Roles;
+using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Persistance.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,17 @@ namespace MedicalAppointmentApp.Web.Controllers
 
             if (result.IsSuccess && result.Data != null)
             {
-                List<RoleModel> roleModel = (List<RoleModel>)result.Data;
+                List<RoleModel> roleModel = ((List<Roles>)result.Data)
+                    .Select(r => new RoleModel
+                    {
+                        RoleId = r.RoleID,          
+                        RoleName = r.RoleName,
+                        CreatedAt = r.CreatedAt,    
+                        UpdatedAt = r.UpdatedAt,    
+                        IsActive = r.IsActive       
+                    })
+                    .ToList();
+
                 return View(roleModel);
             }
 
@@ -40,6 +51,7 @@ namespace MedicalAppointmentApp.Web.Controllers
             try
             {
                 rolesSave.RoleID = 1;
+                rolesSave.CreatedAt = DateTime.Now;
                 var result = await _rolesService.SaveAsync(rolesSave);
 
                 if (result.IsSuccess)

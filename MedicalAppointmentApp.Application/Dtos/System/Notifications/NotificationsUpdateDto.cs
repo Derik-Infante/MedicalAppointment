@@ -1,9 +1,11 @@
 ﻿
 namespace MedicalAppointmentApp.Application.Dtos.System.Notifications
 {
-    public class NotificationsUpdateDto
+    public class NotificationsUpdateDto :NotificationsDtoBase
     {
-        public int NotificationID { get; set; }
         public string? Message { get; set; }
+
+        public DateTime SentAt { get; set; }
+
     }
 }
