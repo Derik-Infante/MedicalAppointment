@@ -8,6 +8,7 @@ namespace MedicalAppointmentApp.Persistance.Interfaces.System
     {
         Task<OperationResult> AddNotification(Notifications notification); // Para agregar una nueva notificación
         Task<OperationResult> GetNotificationByNotificationID(int NotificationID); // Obtener notificación por ID
+        Task<IEnumerable<Notifications>> GetAllNotifications();
         Task<OperationResult> DeleteNotification(int NotificationID); // Eliminar notificación
         
     }

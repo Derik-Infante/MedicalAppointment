@@ -1,6 +1,5 @@
 ﻿
 using MedicalAppointmentApp.Domain.Entities.System;
-using MedicalAppointmentApp.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
@@ -27,9 +26,6 @@ namespace MedicalAppointmentApp.Persistance.Context
         public DbSet<Status> Status { get; set; }
         #endregion
 
-        #region "Users Entities"
-        public DbSet<Users> Users { get; set; }
-        #endregion
-
+        
     }
 }

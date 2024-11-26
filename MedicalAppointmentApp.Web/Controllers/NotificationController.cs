@@ -28,18 +28,6 @@ namespace Front_end.Controllers
 
         }
 
-        public async Task<IActionResult> Details(int id)
-        {
-            var result = await _notificationService.GetById(id);
-
-            if (result.IsSuccess)
-            {
-                var notificationModel = (NotificationModel)result.Data;
-
-                return View(notificationModel);
-            }
-            return View();
-        }
 
         public ActionResult Create()
         {
@@ -48,7 +36,7 @@ namespace Front_end.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(NotificationsSaveDto notificationsSave)
+        public async Task<IActionResult> Create(NotificationsSaveDto notificationsSave)
         {
             try
             {

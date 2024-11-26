@@ -36,28 +36,6 @@ namespace MedicalAppointmentApp.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Details(int id)
-        {
-            string url = "http://localhost:5133/api/";
-
-            NotificationGetByIdModel? notificationGetByIdModel = new NotificationGetByIdModel();
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(url);
-
-                var responseTask = await client.GetAsync($"Notifications/GetNotificationByNotificationID?id={id}");
-
-                if (responseTask.IsSuccessStatusCode)
-                {
-                    string response = await responseTask.Content.ReadAsStringAsync();
-
-                }
-            }
-
-            return View();
-        }
-
         public ActionResult Create()
         {
             return View();
@@ -73,42 +51,38 @@ namespace MedicalAppointmentApp.Web.Controllers
             {
                 string url = "http://localhost:5133/api/";
 
-                using (var client = new HttpClient())
+                using var client = new HttpClient();
+                client.BaseAddress = new Uri(url);
+
+
+                var responseTask = await client.PostAsJsonAsync<NotificationsSaveDto>("Notifications/SaveNotification", notificationsSave);
+
+                if (responseTask.IsSuccessStatusCode)
                 {
-                    client.BaseAddress = new Uri(url);
+                    string response = await responseTask.Content.ReadAsStringAsync();
+
+                    model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
 
 
-                    var responseTask = await client.PostAsJsonAsync<NotificationsSaveDto>("Notifications/SaveNotification", notificationsSave);
-
-                    if (responseTask.IsSuccessStatusCode)
+                    if (!model.success)
                     {
-                        string response = await responseTask.Content.ReadAsStringAsync();
+                        ViewBag.Message = model.message;
+                        return View();
 
-                        model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
-
-
-                        if (!model.success)
-                        {
-                            ViewBag.Message = model.message;
-                            return View();
-
-                        }
-                        else
-                        {
-
-                            return RedirectToAction(nameof(Index));
-                        }
                     }
                     else
                     {
-                        string response = await responseTask.Content.ReadAsStringAsync();
-                        model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
 
-                        ViewBag.Message = model.message;
-                        return View();
+                        return RedirectToAction(nameof(Index));
                     }
+                }
+                else
+                {
+                    string response = await responseTask.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
 
-
+                    ViewBag.Message = model.message;
+                    return View();
                 }
 
             }

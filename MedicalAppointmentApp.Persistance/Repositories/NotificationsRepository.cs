@@ -34,17 +34,14 @@ namespace MedicalAppointmentApp.Persistance.Repositories
         {
             try
             {
-                var notifications = await (from n in _medicalAppointmentsContext.Notifications
-                                           join u in _medicalAppointmentsContext.Users
-                                           on n.UserID equals u.UserID
-                                           where n.UserID == UserID
-                                           select new
-                                           {
-                                               n.NotificationID,
-                                               n.Message,
-                                               UserFirstName = u.FirstName,
-                                               UserLastName = u.LastName
-                                           }).ToListAsync();
+                var notifications = await _medicalAppointmentsContext.Notifications
+            .Where(n => n.UserID == UserID)
+            .Select(n => new
+            {
+                n.NotificationID,
+                n.Message
+            })
+            .ToListAsync();
 
                 return new OperationResult { Success = true, Data = notifications };
             }
@@ -67,6 +64,10 @@ namespace MedicalAppointmentApp.Persistance.Repositories
             return await Remove(notification);
         }
 
-        
+        public async Task<IEnumerable<Notifications>> GetAllNotifications()
+        {
+            return await _medicalAppointmentsContext.Notifications.ToListAsync();
+        }
+
     }
 }

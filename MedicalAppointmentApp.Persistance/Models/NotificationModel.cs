@@ -12,8 +12,4 @@ public partial class NotificationModel
 
     public DateTime SentAt { get; set; }
 
-    public static explicit operator NotificationModel(List<NotificationModel>? v)
-    {
-        throw new NotImplementedException();
-    }
 }
