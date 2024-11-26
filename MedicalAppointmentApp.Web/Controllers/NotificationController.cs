@@ -1,4 +1,5 @@
 ﻿using MedicalAppointmentApp.Application.Contracts;
+using MedicalAppointmentApp.Application.Dtos.System.Notifications;
 using MedicalAppointmentApp.Persistance.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +39,38 @@ namespace Front_end.Controllers
                 return View(notificationModel);
             }
             return View();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(NotificationsSaveDto notificationsSave)
+        {
+            try
+            {
+                notificationsSave.SentAt = DateTime.Now;
+                notificationsSave.NotificationID = 1;
+                var result = await _notificationService.SaveAsync(notificationsSave);
+
+                if (result.IsSuccess)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Message = result.Message;
+                    return View();
+                }
+
+            }
+            catch
+            {
+                return View();
+            }
         }
 
     }

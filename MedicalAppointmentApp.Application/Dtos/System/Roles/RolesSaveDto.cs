@@ -1,8 +1,8 @@
 ﻿
 namespace MedicalAppointmentApp.Application.Dtos.System.Roles
 {
-    public class RolesSaveDto
+    public class RolesSaveDto : RolesDtoBase
     {
-        public string? RoleName { get; set; }
+
     }
 }
