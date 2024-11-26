@@ -1,8 +1,7 @@
-﻿using MedicalAppointmentApp.Web.Models;
-using Microsoft.AspNetCore.Http;
+﻿using MedicalAppointmentApp.Application.Dtos.System.Roles;
+using MedicalAppointmentApp.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Runtime.CompilerServices;
 
 namespace MedicalAppointmentApp.Web.Controllers
 {
@@ -44,11 +43,52 @@ namespace MedicalAppointmentApp.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IFormCollection collection)
+        public async Task<IActionResult> Create(RolesSaveDto rolesSaveDto)
         {
+            BaseApiResponseModel model = new BaseApiResponseModel();
+
             try
             {
-                return RedirectToAction(nameof(Index));
+                string url = "http://localhost:5133/api/";
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(url);
+
+
+                    var responseTask = await client.PostAsJsonAsync<RolesSaveDto>("Roles/SaveRole", rolesSaveDto);
+
+                    if (responseTask.IsSuccessStatusCode)
+                    {
+                        string response = await responseTask.Content.ReadAsStringAsync();
+
+                        model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
+
+
+                        if (!model.success)
+                        {
+                            ViewBag.Message = model.message;
+                            return View();
+
+                        }
+                        else
+                        {
+
+                            return RedirectToAction(nameof(Index));
+                        }
+                    }
+                    else
+                    {
+                        string response = await responseTask.Content.ReadAsStringAsync();
+                        model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
+
+                        ViewBag.Message = model.message;
+                        return View();
+                    }
+
+
+                }
+
             }
             catch
             {
@@ -56,18 +96,11 @@ namespace MedicalAppointmentApp.Web.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task <IActionResult> Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id)
         {
             string url = "http://localhost:5133/api/";
 
-            RoleGetByIdModel roleGetByIdModel = new RoleGetByIdModel();
+            RoleGetByIdModel? roleGetByIdModel = new RoleGetByIdModel();
 
             using (var client = new HttpClient())
             {
@@ -84,6 +117,60 @@ namespace MedicalAppointmentApp.Web.Controllers
             }
 
             return View(roleGetByIdModel.data);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task <IActionResult> Edit(RolesUpdateDto rolesUpdateDto)
+        {
+            BaseApiResponseModel model = new BaseApiResponseModel();
+
+            try
+            {
+                string url = "http://localhost:5133/api/";
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(url);
+
+
+                    var responseTask = await client.PutAsJsonAsync<RolesUpdateDto>("Roles/ModifyRole", rolesUpdateDto);
+
+                    if (responseTask.IsSuccessStatusCode)
+                    {
+                        string response = await responseTask.Content.ReadAsStringAsync();
+
+                        model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
+
+
+                        if (!model.success)
+                        {
+                            ViewBag.Message = model.message;
+                            return View();
+
+                        }
+                        else
+                        {
+
+                            return RedirectToAction(nameof(Index));
+                        }
+                    }
+                    else
+                    {
+                        string response = await responseTask.Content.ReadAsStringAsync();
+                        model = JsonConvert.DeserializeObject<BaseApiResponseModel>(response);
+
+                        ViewBag.Message = model.message;
+                        return View();
+                    }
+
+
+                }
+            }
+            catch
+            {
+                return View();
+            }
         }
 
     }
