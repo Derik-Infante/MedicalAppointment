@@ -63,7 +63,6 @@ namespace MedicalAppointmentApp.Web.Controllers
             return View();
         }
 
-        // POST: BusAdmController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(NotificationsSaveDto notificationsSave)
