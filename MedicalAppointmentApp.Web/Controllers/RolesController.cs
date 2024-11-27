@@ -25,11 +25,11 @@ namespace MedicalAppointmentApp.Web.Controllers
                 List<RoleModel> roleModel = ((List<Roles>)result.Data)
                     .Select(r => new RoleModel
                     {
-                        RoleId = r.RoleID,          
+                        RoleId = r.RoleID,
                         RoleName = r.RoleName,
-                        CreatedAt = r.CreatedAt,    
-                        UpdatedAt = r.UpdatedAt,    
-                        IsActive = r.IsActive       
+                        CreatedAt = r.CreatedAt,
+                        UpdatedAt = r.UpdatedAt,
+                        IsActive = r.IsActive
                     })
                     .ToList();
 
@@ -72,22 +72,6 @@ namespace MedicalAppointmentApp.Web.Controllers
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id)
-        {
-            var result = await _rolesService.GetById(id);
 
-            if (result.IsSuccess)
-            {
-                RoleModel roleModel = (RoleModel)result.Data;
-
-                return View(roleModel);
-            }
-
-            return View();
-        }
-
-        
     }
 }
