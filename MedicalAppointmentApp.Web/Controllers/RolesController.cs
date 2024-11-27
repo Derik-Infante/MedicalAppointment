@@ -71,7 +71,6 @@ namespace MedicalAppointmentApp.Web.Controllers
             }
         }
 
-
-
+        
     }
 }
