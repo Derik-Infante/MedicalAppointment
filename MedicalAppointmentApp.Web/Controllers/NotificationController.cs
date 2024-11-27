@@ -1,5 +1,6 @@
 ﻿using MedicalAppointmentApp.Application.Contracts;
 using MedicalAppointmentApp.Application.Dtos.System.Notifications;
+using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Persistance.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,16 @@ namespace Front_end.Controllers
 
             if (result.IsSuccess && result.Data != null)
             {
-                List<NotificationModel> notificationModel = (List<NotificationModel>)result.Data;
+                List<NotificationModel> notificationModel = ((List<Notifications>)result.Data)
+                     .Select(n => new NotificationModel
+                     {
+                         NotificationId = n.NotificationID,  
+                         UserId = n.UserID,                  
+                         Message = n.Message,                
+                         SentAt = n.SentAt                     
+                     })
+                     .ToList();
+
                 return View(notificationModel);
             }
 
