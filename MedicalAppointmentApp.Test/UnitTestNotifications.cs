@@ -1,6 +1,6 @@
 namespace MedicalAppointmentApp.Test
 {
-    public class UnitTest1
+    public class UnitTestNotifications
     {
         [Fact]
         public void Test1()
