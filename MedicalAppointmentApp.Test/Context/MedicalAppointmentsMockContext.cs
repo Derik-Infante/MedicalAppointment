@@ -11,7 +11,7 @@ namespace MedicalAppointmentApp.Test.Context
         {}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("bolectodb");
+            optionsBuilder.UseInMemoryDatabase("MedicalAppointmentDb");
         }
     }
 }
