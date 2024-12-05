@@ -22,19 +22,15 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model != null && Model.Any())
-        {
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.StatusId)</td>
-                    <td>@Html.DisplayFor(modelItem => item.StatusName)</td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr><td colspan="4">No status available.</td></tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusName)
+            </td>
+        </tr>
+}
     </tbody>
 </table>

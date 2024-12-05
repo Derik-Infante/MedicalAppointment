@@ -1,5 +1,5 @@
-﻿using MedicalAppointmentApp.Application.Dtos.System.Notifications;
-using MedicalAppointmentApp.Application.Dtos.System.Status;
+﻿using MedicalAppointmentApp.Application.Dtos.System.Status;
+using MedicalAppointmentApp.Persistance.Models;
 using MedicalAppointmentApp.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -23,17 +23,15 @@ namespace MedicalAppointmentApp.Web.Controllers
                 if (responseTask.IsSuccessStatusCode)
                 {
                     string response = await responseTask.Content.ReadAsStringAsync();
-
                     statusGetAllResultModel = JsonConvert.DeserializeObject<StatusGetAllResultModel>(response);
-
                 }
                 else
                 {
-                    ViewBag.Message = "";
+                    ViewBag.Message = "Error fetching data.";
                 }
             }
 
-            return View();
+            return View(statusGetAllResultModel?.data ?? new List<StatusModel>());
         }
 
 
