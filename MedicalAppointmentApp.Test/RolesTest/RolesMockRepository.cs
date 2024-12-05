@@ -81,7 +81,7 @@ namespace MedicalAppointmentApp.Test.RolesTest
             }
             catch (Exception ex)
             {
-                result.Message = "Ocurrio un error guardando el rol";
+                result.Message = $"Ocurrió un error guardando el rol: {ex.Message}";
                 result.Success = false;
             }
 

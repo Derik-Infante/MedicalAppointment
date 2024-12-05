@@ -1,29 +1,30 @@
+﻿
 using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Test.Context;
-using MedicalAppointmentApp.Test.NotificationsTest;
+using MedicalAppointmentApp.Test.RolesTest;
 using Moq;
 
 namespace MedicalAppointmentApp.Test
 {
-    public class UnitTestNotifications
+    public class UnitTestRoles
     {
-        private readonly NotificationsMockRepository _notificationsRepository;
+        private readonly RolesMockRepository _rolesRepository;
 
-        public UnitTestNotifications()
+        public UnitTestRoles()
         {
             var mockContext = new Mock<MedicalAppointmentsMockContext>();
-            _notificationsRepository = new NotificationsMockRepository(mockContext.Object);
+            _rolesRepository = new RolesMockRepository(mockContext.Object);
         }
 
         [Fact]
-        public async void Save_NullNotification_ReturnsFailure()
+        public async void Save_NullRole_ReturnsFailure()
         {
             // Arrange
-            Notifications notification = null;
+            Roles role = null;
 
             // Act
-            var result = await _notificationsRepository.Save(notification);
+            var result = await _rolesRepository.Save(role);
             var expectedMessage = "La entidad es requerida.";
 
             // Assert
@@ -33,14 +34,14 @@ namespace MedicalAppointmentApp.Test
         }
 
         [Fact]
-        public async void Save_EmptyMessage_ReturnsFailure()
+        public async void Save_EmptyRoleName_ReturnsFailure()
         {
             // Arrange
-            var notification = new Notifications { Message = string.Empty };
+            var role = new Roles { RoleName = string.Empty };
 
             // Act
-            var result = await _notificationsRepository.Save(notification);
-            var expectedMessage = "Mensaje requerido";
+            var result = await _rolesRepository.Save(role);
+            var expectedMessage = "Nombre del rol requerido";
 
             // Assert
             Assert.IsType<OperationResult>(result);

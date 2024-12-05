@@ -1,29 +1,30 @@
+﻿
 using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Test.Context;
-using MedicalAppointmentApp.Test.NotificationsTest;
+using MedicalAppointmentApp.Test.StatusTest;
 using Moq;
 
 namespace MedicalAppointmentApp.Test
 {
-    public class UnitTestNotifications
+    public class UnitTestStatus
     {
-        private readonly NotificationsMockRepository _notificationsRepository;
+        private readonly StatusMockRepository _statusRepository;
 
-        public UnitTestNotifications()
+        public UnitTestStatus()
         {
             var mockContext = new Mock<MedicalAppointmentsMockContext>();
-            _notificationsRepository = new NotificationsMockRepository(mockContext.Object);
+            _statusRepository = new StatusMockRepository(mockContext.Object);
         }
 
         [Fact]
-        public async void Save_NullNotification_ReturnsFailure()
+        public async void Save_NullStatus_ReturnsFailure()
         {
             // Arrange
-            Notifications notification = null;
+            Status status = null;
 
             // Act
-            var result = await _notificationsRepository.Save(notification);
+            var result = await _statusRepository.Save(status);
             var expectedMessage = "La entidad es requerida.";
 
             // Assert
@@ -33,14 +34,14 @@ namespace MedicalAppointmentApp.Test
         }
 
         [Fact]
-        public async void Save_EmptyMessage_ReturnsFailure()
+        public async void Save_EmptyStatusName_ReturnsFailure()
         {
             // Arrange
-            var notification = new Notifications { Message = string.Empty };
+            var status = new Status { statusName = string.Empty };
 
             // Act
-            var result = await _notificationsRepository.Save(notification);
-            var expectedMessage = "Mensaje requerido";
+            var result = await _statusRepository.Save(status);
+            var expectedMessage = "Nombre requerido";
 
             // Assert
             Assert.IsType<OperationResult>(result);
@@ -48,5 +49,4 @@ namespace MedicalAppointmentApp.Test
             Assert.Equal(expectedMessage, result.Message);
         }
     }
-
 }
