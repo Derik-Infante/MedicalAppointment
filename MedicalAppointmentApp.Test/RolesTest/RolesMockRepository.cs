@@ -3,12 +3,18 @@
 using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
+using MedicalAppointmentApp.Test.Context;
 using System.Linq.Expressions;
 
 namespace MedicalAppointmentApp.Test.RolesTest
 {
     public class RolesMockRepository : IRolesRepository
     {
+        private readonly MedicalAppointmentsMockContext context;
+        public RolesMockRepository(MedicalAppointmentsMockContext context)
+        {
+            this.context = context;
+        }
         public Task<OperationResult> AddRole(Roles role)
         {
             throw new NotImplementedException();
@@ -49,9 +55,37 @@ namespace MedicalAppointmentApp.Test.RolesTest
             throw new NotImplementedException();
         }
 
-        public Task<OperationResult> Save(Roles entity)
+        public async Task<OperationResult> Save(Roles entity)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult();
+
+            try
+            {
+
+                if (entity == null)
+                {
+                    result.Success = false;
+                    result.Message = "La entidad es requerida.";
+                    return result;
+                }
+
+                if (string.IsNullOrEmpty(entity.RoleName))
+                {
+                    result.Success = false;
+                    result.Message = "Nombre del rol requerido";
+                    return result;
+                }
+                await this.context.AddAsync(entity);
+                await this.context.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                result.Message = "Ocurrio un error guardando el rol";
+                result.Success = false;
+            }
+
+            return result;
         }
 
         public Task<OperationResult> Update(Roles entity)

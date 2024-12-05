@@ -3,12 +3,18 @@
 using MedicalAppointmentApp.Domain.Entities.System;
 using MedicalAppointmentApp.Domain.Result;
 using MedicalAppointmentApp.Persistance.Interfaces.System;
+using MedicalAppointmentApp.Test.Context;
 using System.Linq.Expressions;
 
 namespace MedicalAppointmentApp.Test.StatusTest
 {
     public class StatusMockRepository : IStatusRepository
     {
+        private readonly MedicalAppointmentsMockContext context;
+        public StatusMockRepository(MedicalAppointmentsMockContext context)
+        {
+            this.context = context;
+        }
         public Task<OperationResult> AddStatus(Status status)
         {
             throw new NotImplementedException();
@@ -49,9 +55,37 @@ namespace MedicalAppointmentApp.Test.StatusTest
             throw new NotImplementedException();
         }
 
-        public Task<OperationResult> Save(Status entity)
+        public async Task<OperationResult> Save(Status entity)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult();
+
+            try
+            {
+
+                if (entity == null)
+                {
+                    result.Success = false;
+                    result.Message = "La entidad es requerida.";
+                    return result;
+                }
+
+                if (string.IsNullOrEmpty(entity.statusName))
+                {
+                    result.Success = false;
+                    result.Message = "Nombre requerido";
+                    return result;
+                }
+                await this.context.AddAsync(entity);
+                await this.context.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                result.Message = "Ocurrio un error guardando el status";
+                result.Success = false;
+            }
+
+            return result;
         }
 
         public Task<OperationResult> Update(Status entity)
